@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    hikari:
+      batch:
+        jdbc-url: jdbc:mariadb://localhost:3306/batch
+        driver-class-name: org.mariadb.jdbc.Driver
+        username: root
+        password: 1234
+      demo:
+        jdbc-url: jdbc:mariadb://localhost:3306/demo?rewriteBatchedStatements=true
+        driver-class-name: org.mariadb.jdbc.Driver
+        username: root
+        password: 1234
+  batch:
+    initialize-schema: always
+    job:
+      names: ${job.name:NONE}
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    database-platform: org.hibernate.dialect.MariaDBDialect
+logging:
+  level:
+    root: info
